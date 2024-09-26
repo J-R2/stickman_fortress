@@ -67,6 +67,7 @@ func next_wave() -> void :
 
 ## Sets the wave banner text and flies the banner across the screen.
 func show_wave_banner() -> void :
+	timer.stop()
 	var txt = "Wave  " + str(current_wave)
 	var banner = $WaveBanner
 	var label = $WaveBanner/Label
@@ -75,7 +76,8 @@ func show_wave_banner() -> void :
 	var tween = create_tween()
 	tween.tween_property(banner, "position:y", screen_size.y + 150, 3.0)
 	await tween.finished
-
+	timer.start()
+	
 
 ## Instance a enemy scene, position it to the spawn marker, and add enemy to scene.
 func spawn_enemy() -> void :

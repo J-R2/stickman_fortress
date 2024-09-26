@@ -49,6 +49,7 @@ offset_left = -1096.0
 offset_top = 342.0
 offset_right = -155.0
 offset_bottom = 370.0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxEmpty_focek")

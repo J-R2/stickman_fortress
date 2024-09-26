@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.00149101
+mouse_filter = 2
 script = ExtResource("1_3sd78")
 
 [node name="AmmoBox" type="TextureRect" parent="."]
