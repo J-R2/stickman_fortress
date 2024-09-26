@@ -4,6 +4,7 @@ const BULLET = preload("res://scenes/bullet_scene/bullet.tscn")  ## The bullet s
 
 @onready var muzzle: Marker2D = $Muzzle  ## Position of the gun's muzzle tip, for positioning instanced bullets.
 @onready var animation_player: AnimationPlayer = $AnimationPlayer  ## Has a "reload" animation
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 ## The current ammo count.
 var ammo :int = 0
@@ -47,6 +48,7 @@ func shoot() -> void:
 	bullet.global_rotation = global_rotation
 	bullet.global_position = muzzle.global_position
 	muzzle.add_child(bullet)
+	audio_stream_player_2d.play()
 
 
 func _update_ammo(ammo_count, _grenades_count) -> void:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://1x0cwiujmib2"]
+[gd_scene load_steps=9 format=3 uid="uid://1x0cwiujmib2"]
 
 [ext_resource type="Script" path="res://scenes/gun_scene/gun.gd" id="1_inumd"]
 [ext_resource type="Texture2D" uid="uid://w2di1b0betsw" path="res://scenes/gun_scene/art/magazine2.png" id="2_t1iax"]
 [ext_resource type="Texture2D" uid="uid://c5lvp2hhsq082" path="res://scenes/gun_scene/art/assaultrifle_nomag.png" id="3_4tj1i"]
+[ext_resource type="AudioStream" uid="uid://bgmcjgd8uenwc" path="res://scenes/gun_scene/sounds/single_fire_762.wav" id="4_rg621"]
+[ext_resource type="AudioStream" uid="uid://d1xcsn466us38" path="res://scenes/gun_scene/sounds/ak_rack.wav" id="5_mbo5l"]
 
 [sub_resource type="Animation" id="Animation_skpik"]
 length = 0.001
@@ -30,10 +32,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_rg621")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rinkr"]
 resource_name = "reload"
-length = 0.45
+length = 0.65
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -42,7 +68,7 @@ tracks/0/path = NodePath("MagazineSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(14, 8), Vector2(14, 100), Vector2(17, 14), Vector2(14, 8)]
@@ -54,7 +80,7 @@ tracks/1/path = NodePath("MagazineSprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, -0.261799, 0.0]
@@ -66,10 +92,34 @@ tracks/2/path = NodePath("MagazineSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_mbo5l")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vsu4e"]
@@ -98,3 +148,6 @@ libraries = {
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(55, -7)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rg621")
