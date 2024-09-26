@@ -11,7 +11,6 @@
 visible = false
 
 [node name="Tower" parent="." instance=ExtResource("2_uexxp")]
-position = Vector2(1209, 351)
 
 [node name="Player" parent="." instance=ExtResource("3_owckq")]
 position = Vector2(1185, 330)

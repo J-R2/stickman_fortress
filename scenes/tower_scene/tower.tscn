@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bewh608jl7318"]
+[gd_scene load_steps=7 format=3 uid="uid://bewh608jl7318"]
 
 [ext_resource type="Script" path="res://scenes/tower_scene/tower.gd" id="1_fngo6"]
 [ext_resource type="Texture2D" uid="uid://bxditej6vevwy" path="res://scenes/tower_scene/tower.png" id="1_foeke"]
@@ -9,7 +9,17 @@ size = Vector2(128, 728)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csmme"]
 size = Vector2(62, 728)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focek"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6q06"]
+bg_color = Color(0.822682, 0.0502651, 1.92523e-07, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="Tower" type="StaticBody2D"]
+position = Vector2(1209, 347)
 collision_mask = 2
 script = ExtResource("1_fngo6")
 
@@ -30,3 +40,17 @@ collision_mask = 2
 position = Vector2(-84, 0)
 shape = SubResource("RectangleShape2D_csmme")
 debug_color = Color(0.912966, 0.345364, 0.390131, 0.42)
+
+[node name="DamageTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -1096.0
+offset_top = 342.0
+offset_right = -155.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxEmpty_focek")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q6q06")
+value = 100.0

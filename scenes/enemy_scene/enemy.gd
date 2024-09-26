@@ -20,24 +20,21 @@ func _process(delta: float) -> void:
 	var direction = Vector2.RIGHT
 	velocity = SPEED * direction
 	move_and_slide()
-
+	
 
 func _on_hit_box_entered(area :Area2D) -> void :
+	set_process(false)
+	var blood = BLOOD_SPLATTER.instantiate()
+	blood.position.y -= 25
+	add_child(blood)
+	
 	if area is Bullet:
-		var blood = BLOOD_SPLATTER.instantiate()
-		blood.position.y -= 25
-		add_child(blood)
-		if health < 1: return
-		set_process(false)
 		health -= 1
-		animation_player.stop()
-		if health < 1:
-			animation_player.play("die")
-			await animation_player.animation_finished
-			queue_free()
+	if area.name == "ExplosiveArea":
+		health = 0
+	if health > 0:
 		animation_player.play("hurt")
 		await animation_player.animation_finished
 		set_process(true)
-	
-
-
+		return
+	animation_player.play("die")
