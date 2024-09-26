@@ -7,10 +7,12 @@ const OUT_OF_AMMO_SOUND = preload("res://scenes/gun_scene/sounds/outofammo.ogg")
 
 @onready var muzzle: Marker2D = $Muzzle  ## Position of the gun's muzzle tip, for positioning instanced bullets.
 @onready var animation_player: AnimationPlayer = $AnimationPlayer  ## Has a "reload" animation
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+## Plays a shooting, reloading, or dry fire (out of ammo) sound
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D 
 
 ## The current ammo count.
 var ammo :int = 0
+## Is the gun reloading. Cannot shoot if reloading.
 var is_reloading = false
 
 
@@ -20,19 +22,19 @@ func _ready() -> void:
 
 ## Handles input and logic for shooting and reloading.
 func _unhandled_input(event: InputEvent) -> void:
+	# ========================================= LEFT MOUSE BUTTON
 	var is_left_click : bool = (
 		event is InputEventMouseButton and
 		event.button_index == MOUSE_BUTTON_LEFT and
 		event.is_pressed()
 	)
-	# Shoot if left click and there is available ammo.
+	# Shoot if left click and there is available ammo and not reloading.
 	if is_left_click and ammo > 0 and !is_reloading:
 		shoot()
-	if is_left_click and ammo < 1:
+	if is_left_click and ammo < 1: # Play the dry fire sound if out of ammo.
 		audio_stream_player_2d.stream = OUT_OF_AMMO_SOUND
 		audio_stream_player_2d.play()
-	
-	
+	# ========================================= RELOAD BUTTON
 	var is_reload_button :bool = (
 		event is InputEventKey and
 		(event as InputEventKey).physical_keycode == KEY_R and
@@ -61,7 +63,7 @@ func shoot() -> void:
 	muzzle.add_child(bullet)
 	audio_stream_player_2d.play()
 
-
+## Sets the weapons ammo count. Ignores grenade count.
 func _update_ammo(ammo_count, _grenades_count) -> void:
 	ammo = ammo_count
 

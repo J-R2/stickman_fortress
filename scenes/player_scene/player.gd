@@ -1,9 +1,17 @@
 ## The player character.  Stands tall on his fortress with guns and grenades held high.
 extends Node2D
 
+## Informs other nodes about the current amount of ammo and grenades the player has.
 signal ammunition_counter(ammo:int, grenades:int)
+## Informs other nodes about how many enemies the player has killed.
 signal enemies_killed(count)
 
+
+# The max ammo and grenades the player can hold. (Infinite reload of gun ammo.)
+const MAX_AMMO = 30
+const MAX_GRENADES = 5
+const GRENADE = preload("res://scenes/grenade_scene/grenade.tscn")
+## Banter the player will say after killing an enemy.  20% chance to talk on enemy kill.
 const VOICE_LINES = [
 	preload("res://scenes/player_scene/sounds/01._thats_gotta_hurt.wav"),
 	preload("res://scenes/player_scene/sounds/02._somebody_call_a_doctor.wav"),
@@ -28,22 +36,17 @@ const VOICE_LINES = [
 	preload("res://scenes/player_scene/sounds/25._resistant_tissue.wav"),
 	preload("res://scenes/player_scene/sounds/26._weak_sauce.wav"),
 ]
+## So that the banter is played in order.  Randomizing it played the same line too often.
 var line_index := 0
-
-
-const GRENADE = preload("res://scenes/grenade_scene/grenade.tscn")
-# The max ammo and grenades the player can hold. (Infinite reload of gun ammo.)
-const MAX_AMMO = 30
-const MAX_GRENADES = 5
 
 ## The pivot for where the player holds the gun, the gun rotates on this pivot to aim at enemies.
 @onready var marker_gun_pivot: Marker2D = $MarkerGunPivot
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
-## Current ammo count.
+## Current ammo count.  Set to MAX_AMMO on ready.
 var ammo := 0
-## Current grenade count.
+## Current grenade count.  Set to MAX_GRENADES on ready.
 var grenades := 0
 
 
@@ -96,6 +99,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		ammunition_counter.emit(ammo, grenades)
 		
 
+## Makes an instance of a grenade and sets the grenade's target destination.
 func launch_grenade(target_destination:Vector2) -> void :
 	var grenade = GRENADE.instantiate()
 	grenade.position = marker_gun_pivot.global_position
@@ -103,6 +107,7 @@ func launch_grenade(target_destination:Vector2) -> void :
 	grenade.initialize(target_destination)
 
 
+## Chance to play a banter line.  Emit enemies_killed to update kill count hud element.
 func _on_enemy_killed(_count:int):
 	enemies_killed.emit(_count)
 	randomize()

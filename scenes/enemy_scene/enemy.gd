@@ -1,9 +1,10 @@
 class_name Enemy
 extends CharacterBody2D
 
-signal died
-var is_dead = false
+signal died ## Emitted when the enemy dies
+var is_dead = false ## To ensure died is only emitted once.
 
+## Enemies grunt after being hit.
 const HURT_SFX = [
 	preload("res://scenes/enemy_scene/sounds/3yell2.wav"),
 	preload("res://scenes/enemy_scene/sounds/3yell4.wav"),
@@ -13,9 +14,8 @@ const HURT_SFX = [
 	preload("res://scenes/enemy_scene/sounds/3yell12.wav"),
 	preload("res://scenes/enemy_scene/sounds/3yell15.wav"),
 ]
+## Plays the hurt_sfx sounds.
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-
-
 ## Plays the different animations the enemy can do ["die", "hurt", "idle", "run"].
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 ## Detects bullets or grenades.
