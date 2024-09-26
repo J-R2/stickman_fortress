@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2do1t84bm7sj"]
+
+[ext_resource type="PackedScene" uid="uid://6j31lg2e3b53" path="res://scenes/tilemap_scene/tilemap.tscn" id="1_aim2n"]
+[ext_resource type="PackedScene" uid="uid://bewh608jl7318" path="res://scenes/tower_scene/tower.tscn" id="2_uexxp"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Tilemap" parent="." instance=ExtResource("1_aim2n")]
+
+[node name="Tower" parent="." instance=ExtResource("2_uexxp")]
+position = Vector2(1209, 351)
