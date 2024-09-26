@@ -4,10 +4,15 @@ extends Control
 @onready var ammo_label: Label = $AmmoBox/AmmoLabel
 @onready var grenade_label: Label = $GrenadeBox/GrenadeLabel
 
+
 func _ready() -> void:
 	get_tree().get_first_node_in_group("player").ammunition_counter.connect(_update_ammo_counters)
 
 
+func _process(delta: float) -> void:
+	if ammo_label.text == "0":
+		ammo_label.text = "R"
+		
 
 func _update_ammo_counters(ammo:int, grenades:int) -> void:
 	ammo_label.text = str(ammo)
