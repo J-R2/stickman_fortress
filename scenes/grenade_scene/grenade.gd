@@ -2,10 +2,16 @@
 class_name Grenade
 extends Node2D
 
+const GRENADE_LAUNCH_SOUND = preload("res://scenes/grenade_scene/sounds/glauncher.ogg")
+const GRENADE_EXPLODE_SOUND = preload("res://scenes/grenade_scene/sounds/explosion.ogg")
+
 ## The destination coordinates of the grenade.  It will travel to destination, then explode.
 var destination := Vector2.ZERO
 ## Plays the "explode" animation
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 
 func _ready() -> void :
@@ -15,6 +21,7 @@ func _ready() -> void :
 
 ## Sets the target destination and launches the grenade.
 func initialize(target_destination:Vector2):
+	audio_stream_player_2d.play()
 	destination = target_destination
 	var duration = .5
 	#var jump_height = 100
@@ -29,7 +36,9 @@ func initialize(target_destination:Vector2):
 	
 ## Activates killzone, plays the explosion animation
 func explode() -> void:
+	audio_stream_player_2d.stream = GRENADE_EXPLODE_SOUND
 	$ExplosiveArea/CollisionShape2D.disabled = false # activate the killzone
 	animation_player.play("explode") # contains the queue_free function
+	audio_stream_player_2d.play()
 
 

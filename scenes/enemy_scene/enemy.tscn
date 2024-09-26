@@ -588,3 +588,6 @@ collision_mask = 5
 position = Vector2(1, -25.5)
 shape = SubResource("RectangleShape2D_e74pl")
 debug_color = Color(0.928047, 0.231826, 0.350502, 0.42)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0

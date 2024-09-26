@@ -1,6 +1,21 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal died
+var is_dead = false
+
+const HURT_SFX = [
+	preload("res://scenes/enemy_scene/sounds/3yell2.wav"),
+	preload("res://scenes/enemy_scene/sounds/3yell4.wav"),
+	preload("res://scenes/enemy_scene/sounds/3yell7.wav"),
+	preload("res://scenes/enemy_scene/sounds/3yell8.wav"),
+	preload("res://scenes/enemy_scene/sounds/3yell10.wav"),
+	preload("res://scenes/enemy_scene/sounds/3yell12.wav"),
+	preload("res://scenes/enemy_scene/sounds/3yell15.wav"),
+]
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+
 ## Plays the different animations the enemy can do ["die", "hurt", "idle", "run"].
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 ## Detects bullets or grenades.
@@ -34,6 +49,9 @@ func _on_hit_box_entered(area :Area2D) -> void :
 	var blood = BLOOD_SPLATTER.instantiate()
 	blood.position.y -= 25 # Spawns on enemy groin if not.
 	add_child(blood) # Add it to the scene.
+	if !audio_stream_player.playing:
+		audio_stream_player.stream = HURT_SFX.pick_random()
+		audio_stream_player.play(.23)
 	# bullets cause 1 damage
 	if area is Bullet:
 		health -= 1
@@ -46,4 +64,8 @@ func _on_hit_box_entered(area :Area2D) -> void :
 		await animation_player.animation_finished
 		set_process(true)
 		return # don't play the die animation
-	animation_player.play("die") # die animation, queue_free() is called from animation player at the end of playing
+	if is_dead == false:
+		animation_player.play("die") # die animation, queue_free() is called from animation player at the end of playing
+		died.emit()
+		is_dead = true
+	

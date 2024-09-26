@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpi4sqt55r3h0"]
+[gd_scene load_steps=9 format=3 uid="uid://bpi4sqt55r3h0"]
 
 [ext_resource type="Texture2D" uid="uid://6ycews3lhluj" path="res://scenes/grenade_scene/grenade.png" id="1_3el53"]
 [ext_resource type="Script" path="res://scenes/grenade_scene/grenade.gd" id="1_t4mv5"]
 [ext_resource type="Texture2D" uid="uid://c1wqp1eeun2xl" path="res://scenes/grenade_scene/explosion.png" id="2_4b8gn"]
+[ext_resource type="AudioStream" uid="uid://beg6wgs1ttpg3" path="res://scenes/grenade_scene/sounds/glauncher.ogg" id="4_xbxau"]
 
 [sub_resource type="Animation" id="Animation_cy7eb"]
 length = 0.001
@@ -195,3 +196,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveArea"]
 shape = SubResource("CircleShape2D_elrbe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xbxau")
+volume_db = -6.0

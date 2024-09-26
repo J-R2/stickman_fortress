@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://t343immbjpkt"]
+[gd_scene load_steps=5 format=3 uid="uid://t343immbjpkt"]
 
 [ext_resource type="Script" path="res://scenes/hud_scene/hud.gd" id="1_3sd78"]
 [ext_resource type="Texture2D" uid="uid://vc87ng3tukqn" path="res://scenes/hud_scene/assets/ammobox.png" id="1_vcpae"]
 [ext_resource type="Texture2D" uid="uid://wr1kiap8ei5r" path="res://scenes/hud_scene/assets/grenadebox.png" id="2_83ayh"]
+[ext_resource type="Texture2D" uid="uid://do5521ajb2uo" path="res://scenes/hud_scene/assets/killcount_box.png" id="4_32nh1"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -67,5 +68,33 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillCountBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 287.049
+offset_top = 32.651
+offset_right = 397.049
+offset_bottom = 107.651
+texture = ExtResource("4_32nh1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="KillCountLabel" type="Label" parent="KillCountBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.473
+anchor_top = 0.58
+anchor_right = 0.473
+anchor_bottom = 0.58
+offset_left = 11.0116
+offset_top = -15.673
+offset_right = 41.0116
+offset_bottom = 15.327
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
