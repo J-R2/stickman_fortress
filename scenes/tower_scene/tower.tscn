@@ -1,15 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://bewh608jl7318"]
+[gd_scene load_steps=5 format=3 uid="uid://bewh608jl7318"]
 
+[ext_resource type="Script" path="res://scenes/tower_scene/tower.gd" id="1_fngo6"]
 [ext_resource type="Texture2D" uid="uid://bxditej6vevwy" path="res://scenes/tower_scene/tower.png" id="1_foeke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l67rf"]
-size = Vector2(222, 728)
+size = Vector2(128, 728)
 
-[node name="Tower" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csmme"]
+size = Vector2(62, 728)
+
+[node name="Tower" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_fngo6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(-2.14521, 2.39589)
+rotation = -3.14159
+scale = Vector2(2.14521, -2.39589)
 texture = ExtResource("1_foeke")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_l67rf")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-84, 0)
+shape = SubResource("RectangleShape2D_csmme")
+debug_color = Color(0.912966, 0.345364, 0.390131, 0.42)

@@ -3,16 +3,21 @@
 [ext_resource type="Script" path="res://scenes/bullet_scene/bullet.gd" id="1_3i4y1"]
 [ext_resource type="Texture2D" uid="uid://c7fl3gj48hs1" path="res://scenes/bullet_scene/bullet.png" id="1_jqegj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3h3q0"]
-radius = 15.0333
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wg68"]
+size = Vector2(8, 4)
 
 [node name="Bullet" type="Area2D"]
-position = Vector2(5, 0)
-scale = Vector2(0.25, 0.25)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_3i4y1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(4, 0)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_jqegj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3h3q0")
+visible = false
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_6wg68")

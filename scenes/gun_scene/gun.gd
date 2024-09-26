@@ -5,10 +5,18 @@ extends Node2D
 const BULLET = preload("res://scenes/bullet_scene/bullet.tscn")
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
 
+func _unhandled_input(event: InputEvent) -> void:
+	var is_left_click: bool = (
+		event is InputEventMouseButton and
+		event.button_index == MOUSE_BUTTON_LEFT and
+		event.is_pressed()
+	)
+	if is_left_click:
+		shoot()
+	
+
+		
 
 
 func shoot() -> void:

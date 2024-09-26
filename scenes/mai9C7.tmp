@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6j31lg2e3b53" path="res://scenes/tilemap_scene/tilemap.tscn" id="1_aim2n"]
 [ext_resource type="PackedScene" uid="uid://bewh608jl7318" path="res://scenes/tower_scene/tower.tscn" id="2_uexxp"]
 [ext_resource type="PackedScene" uid="uid://4hdf5t7j3efu" path="res://scenes/player_scene/player.tscn" id="3_owckq"]
-[ext_resource type="PackedScene" uid="uid://6aly14edm5nr" path="res://scenes/enemy_spawner_scene/enemy_spawner.tscn" id="4_mjg3k"]
+[ext_resource type="PackedScene" uid="uid://bcqm2s3iftpo4" path="res://scenes/enemy_scene/enemy.tscn" id="4_4idht"]
 
 [node name="Main" type="Node2D"]
 
@@ -17,4 +17,8 @@ position = Vector2(1209, 351)
 position = Vector2(1185, 330)
 scale = Vector2(-1, 1)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("4_mjg3k")]
+[node name="Enemy" parent="." instance=ExtResource("4_4idht")]
+position = Vector2(147, 206)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_4idht")]
+position = Vector2(311, 430)

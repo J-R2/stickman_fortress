@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hvo5aysycpsk"
-path="res://.godot/imported/ak47_shoot_with_flash_and_casing.png-352710c80348fd900363528004857948.ctex"
+uid="uid://cbst8knugrjrg"
+path="res://.godot/imported/casing.png-c1fccb283521c4918d2815cf509198d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/gun_scene/art/ak47_shoot_with_flash_and_casing.png"
-dest_files=["res://.godot/imported/ak47_shoot_with_flash_and_casing.png-352710c80348fd900363528004857948.ctex"]
+source_file="res://scenes/bullet_scene/casing.png"
+dest_files=["res://.godot/imported/casing.png-c1fccb283521c4918d2815cf509198d8.ctex"]
 
 [params]
 
