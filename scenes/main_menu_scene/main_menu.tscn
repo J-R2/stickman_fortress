@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c5its3v7gueqp" path="res://scenes/main_menu_scene/assets/panel_blue.png" id="2_dvm1s"]
 [ext_resource type="Texture2D" uid="uid://cdfgmxa7tyki0" path="res://scenes/main_menu_scene/assets/buttonLong_blue.png" id="3_fvsgc"]
 [ext_resource type="Texture2D" uid="uid://40fohua4x85j" path="res://scenes/main_menu_scene/assets/buttonLong_blue_pressed.png" id="4_vgvt2"]
-[ext_resource type="AudioStream" uid="uid://dri1naqsyvet1" path="res://scenes/main_menu_scene/assets/menu_selection_click.wav" id="5_c8oap"]
+[ext_resource type="AudioStream" uid="uid://b7am7lbshyopt" path="res://game_music/game_over_1.mp3" id="5_qej6h"]
 
 [node name="MainMenu" type="Control" groups=["menu"]]
 layout_mode = 3
@@ -134,6 +134,7 @@ theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
 [node name="RulesVBoxContainer" type="VBoxContainer" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,15 +151,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[center]RULES[/center]
-
+text = "[center]RULES
+Don't let enemies overrun the fort.
+[/center]
 [ul]
 Use the left mouse button to shoot.
 Reload with \"R\"
-Use the right mouse button to throw grenades.
+Use the right mouse button to launch grenades.
 [/ul]
-
-Don't let the enemies overrun the fort."
+[center]Grenades resupply every few seconds."
 
 [node name="ReturnButton" type="TextureButton" parent="Background/RulesVBoxContainer"]
 unique_name_in_owner = true
@@ -187,7 +188,6 @@ theme_override_font_sizes/font_size = 32
 text = "Return"
 
 [node name="GameOverVBoxContainer" type="VBoxContainer" parent="Background"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -236,5 +236,5 @@ text = "Menu"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_c8oap")
+stream = ExtResource("5_qej6h")
 volume_db = -10.0

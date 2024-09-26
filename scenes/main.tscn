@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2do1t84bm7sj"]
+[gd_scene load_steps=9 format=3 uid="uid://d2do1t84bm7sj"]
 
 [ext_resource type="PackedScene" uid="uid://6j31lg2e3b53" path="res://scenes/tilemap_scene/tilemap.tscn" id="1_aim2n"]
 [ext_resource type="PackedScene" uid="uid://bewh608jl7318" path="res://scenes/tower_scene/tower.tscn" id="2_uexxp"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://6aly14edm5nr" path="res://scenes/enemy_spawner_scene/enemy_spawner.tscn" id="4_mjg3k"]
 [ext_resource type="PackedScene" uid="uid://70ggjbkmmbl2" path="res://scenes/main_menu_scene/main_menu.tscn" id="5_2ghyx"]
 [ext_resource type="PackedScene" uid="uid://t343immbjpkt" path="res://scenes/hud_scene/hud.tscn" id="6_3l6h2"]
+[ext_resource type="Script" path="res://game_music/game_music.gd" id="7_g8udq"]
+[ext_resource type="AudioStream" uid="uid://b7w151w85x3qc" path="res://game_music/8bit_bossa.mp3" id="7_xcxtr"]
 
 [node name="Main" type="Node2D"]
 
@@ -26,3 +28,9 @@ offset_right = 640.0
 offset_bottom = 359.0
 
 [node name="Hud" parent="." instance=ExtResource("6_3l6h2")]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xcxtr")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("7_g8udq")

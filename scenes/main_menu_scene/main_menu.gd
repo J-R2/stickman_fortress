@@ -2,6 +2,9 @@
 extends Control
 signal game_start
 
+const GAME_OVER_SOUND = preload("res://game_music/game_over_1.mp3")
+const BUTTON_CLICK_SOUND = preload("res://scenes/main_menu_scene/assets/menu_selection_click.wav")
+
 var buttons = null ## Array of all the buttons.
 ## The container that holds all the main menu buttons.
 @onready var button_v_box_container: VBoxContainer = $Background/ButtonVBoxContainer
@@ -9,6 +12,7 @@ var buttons = null ## Array of all the buttons.
 @onready var rules_v_box_container: VBoxContainer = $Background/RulesVBoxContainer
 ## The game over page.
 @onready var game_over_v_box_container :VBoxContainer = $Background/GameOverVBoxContainer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS # Don't pause the menu.
@@ -16,7 +20,10 @@ func _ready() -> void:
 	buttons = [%PlayButton, %RulesButton, %QuitButton, %ReturnButton, %ReplayButton] # easier to call functions
 	var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 	for button in buttons: # make the buttons play a sound when you hover over them
-		button.mouse_entered.connect(audio_stream_player.play)
+		button.mouse_entered.connect(func() -> void :
+			audio_stream_player.stream = BUTTON_CLICK_SOUND
+			audio_stream_player.play()
+		)
 	# connect the buttons to their corresponding functions
 	%PlayButton.pressed.connect(_play_game)
 	%RulesButton.pressed.connect(show_rules)
@@ -31,6 +38,8 @@ func _ready() -> void:
 
 func _on_game_over() -> void:
 	show_game_over()
+	audio_stream_player.stream = GAME_OVER_SOUND
+	audio_stream_player.play()
 
 
 func show_game_over() -> void :
@@ -38,6 +47,9 @@ func show_game_over() -> void :
 	_hide_menu_entries()
 	show()
 	game_over_v_box_container.show()
+	%ReplayButton.visible = false
+	await audio_stream_player.finished
+	%ReplayButton.visible = true
 	%ReplayButton.disabled = false
 	
 

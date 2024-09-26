@@ -86,7 +86,7 @@ rotation = 0.0628146
 position = Vector2(-0.18832, -2.99408)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="GrenadePickupTimer" type="Timer" parent="."]
 wait_time = 5.0

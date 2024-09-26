@@ -7,15 +7,15 @@
 script = ExtResource("1_ns21r")
 
 [node name="Marker" type="Marker2D" parent="."]
-position = Vector2(-80, 59)
+position = Vector2(-39, 136)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="WaveBanner" type="NinePatchRect" parent="."]
-offset_left = 534.0
+offset_left = 482.0
 offset_top = -95.0
-offset_right = 709.0
+offset_right = 657.0
 offset_bottom = -55.0
 texture = ExtResource("2_hwe0v")
 patch_margin_left = 6
