@@ -80,6 +80,7 @@ frame_progress = 0.559414
 
 [node name="MarkerGunPivot" type="Marker2D" parent="."]
 position = Vector2(36, -49)
+rotation = 0.0628146
 
 [node name="Gun" parent="MarkerGunPivot" instance=ExtResource("2_eglij")]
 position = Vector2(-10, -2)

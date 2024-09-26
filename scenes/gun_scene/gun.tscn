@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://1x0cwiujmib2"]
+[gd_scene load_steps=3 format=3 uid="uid://1x0cwiujmib2"]
 
+[ext_resource type="Script" path="res://scenes/gun_scene/gun.gd" id="1_inumd"]
 [ext_resource type="Texture2D" uid="uid://hvo5aysycpsk" path="res://scenes/gun_scene/art/ak47_shoot_with_flash_and_casing.png" id="1_jqldp"]
 
 [node name="Gun" type="Node2D"]
+script = ExtResource("1_inumd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(27, 11)
@@ -10,3 +12,6 @@ texture = ExtResource("1_jqldp")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(60, -3)
