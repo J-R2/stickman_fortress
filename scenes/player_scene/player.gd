@@ -9,7 +9,7 @@ signal enemies_killed(count)
 
 # The max ammo and grenades the player can hold. (Infinite reload of gun ammo.)
 const MAX_AMMO = 30
-const MAX_GRENADES = 5
+const MAX_GRENADES = 3
 const GRENADE = preload("res://scenes/grenade_scene/grenade.tscn")
 ## Banter the player will say after killing an enemy.  20% chance to talk on enemy kill.
 const VOICE_LINES = [
@@ -41,7 +41,10 @@ var line_index := 0
 
 ## The pivot for where the player holds the gun, the gun rotates on this pivot to aim at enemies.
 @onready var marker_gun_pivot: Marker2D = $MarkerGunPivot
+## Plays the Banter voice lines.
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+## Players receive an additional grenade on timer timeout.
+@onready var grenade_pickup_timer: Timer = $GrenadePickupTimer
 
 
 ## Current ammo count.  Set to MAX_AMMO on ready.
@@ -56,7 +59,12 @@ func _ready() -> void :
 	get_viewport().ready.connect(func() -> void: ammunition_counter.emit(ammo, grenades))
 	get_tree().get_first_node_in_group("spawner").death_counter.connect(_on_enemy_killed)
 	get_tree().get_first_node_in_group("menu").game_start.connect(func() -> void :ammunition_counter.emit(ammo, grenades))
-
+	grenade_pickup_timer.timeout.connect(
+		func() -> void :
+			if grenades < MAX_GRENADES:
+				grenades += 1
+				ammunition_counter.emit(ammo, grenades)
+	)
 
 ## Aim the gun towards the crosshair, only allow to aim towards right side of the screen.
 ## [br](The player scale's x axis is inverted in main scene.)

@@ -8,7 +8,7 @@ var death_count := 0 ## The current kill count of the player.
 ## The enemy scene.
 const ENEMY_SCENE :PackedScene = preload("res://scenes/enemy_scene/enemy.tscn")
 
-const START_SPAWN_COUNT := 10  ## Wave 1 max spawned enemies
+const START_SPAWN_COUNT := 15  ## Wave 1 max spawned enemies
 const START_TIME_MIN := 0.5  ## Wave 1 minimum time between enemy spawns.
 const START_TIME_MAX := 1.5  ## Wave 1 maximum time between enemy spawns.
 

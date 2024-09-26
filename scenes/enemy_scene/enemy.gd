@@ -4,6 +4,9 @@ extends CharacterBody2D
 signal died ## Emitted when the enemy dies
 var is_dead = false ## To ensure died is only emitted once.
 
+# The nubmer of bullet hits the enemy can take.  Grenades kill on impact.
+const MAX_HEALTH :int = 2
+
 ## Enemies grunt after being hit.
 const HURT_SFX = [
 	preload("res://scenes/enemy_scene/sounds/3yell2.wav"),
@@ -23,7 +26,7 @@ const HURT_SFX = [
 ## A blood_splatter.tscn, instanced when the hit_box is hit.
 const BLOOD_SPLATTER = preload("res://scenes/blood_splatter_scene/blood_splatter.tscn")
 ## The enemy's health, will go to 0 on grenade hits and health-1 on bullet hit.
-var health :int = 2
+var health :int = MAX_HEALTH
 ## The enemy's speed.
 const SPEED = 100
 
