@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2do1t84bm7sj"]
+[gd_scene load_steps=5 format=3 uid="uid://d2do1t84bm7sj"]
 
 [ext_resource type="PackedScene" uid="uid://6j31lg2e3b53" path="res://scenes/tilemap_scene/tilemap.tscn" id="1_aim2n"]
 [ext_resource type="PackedScene" uid="uid://bewh608jl7318" path="res://scenes/tower_scene/tower.tscn" id="2_uexxp"]
 [ext_resource type="PackedScene" uid="uid://4hdf5t7j3efu" path="res://scenes/player_scene/player.tscn" id="3_owckq"]
+[ext_resource type="PackedScene" uid="uid://bcqm2s3iftpo4" path="res://scenes/enemy_scene/enemy.tscn" id="4_4idht"]
 
 [node name="Main" type="Node2D"]
 
@@ -12,5 +13,11 @@
 position = Vector2(1209, 351)
 
 [node name="Player" parent="." instance=ExtResource("3_owckq")]
-position = Vector2(1185, 331)
+position = Vector2(1185, 330)
 scale = Vector2(-1, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("4_4idht")]
+position = Vector2(147, 206)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_4idht")]
+position = Vector2(311, 430)
