@@ -18,7 +18,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Tower" type="StaticBody2D"]
+[node name="Tower" type="StaticBody2D" groups=["tower"]]
 position = Vector2(1209, 347)
 collision_mask = 2
 script = ExtResource("1_fngo6")

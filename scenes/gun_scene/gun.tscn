@@ -1,17 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://1x0cwiujmib2"]
+[gd_scene load_steps=7 format=3 uid="uid://1x0cwiujmib2"]
 
 [ext_resource type="Script" path="res://scenes/gun_scene/gun.gd" id="1_inumd"]
-[ext_resource type="Texture2D" uid="uid://klbv5ufdmalv" path="res://scenes/gun_scene/art/assaultrifle.png" id="2_3xtpk"]
+[ext_resource type="Texture2D" uid="uid://w2di1b0betsw" path="res://scenes/gun_scene/art/magazine2.png" id="2_t1iax"]
+[ext_resource type="Texture2D" uid="uid://c5lvp2hhsq082" path="res://scenes/gun_scene/art/assaultrifle_nomag.png" id="3_4tj1i"]
+
+[sub_resource type="Animation" id="Animation_rinkr"]
+resource_name = "reload"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MagazineSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(14, 8), Vector2(14, 100), Vector2(17, 14), Vector2(14, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MagazineSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MagazineSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_skpik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MagazineSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MagazineSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsu4e"]
+_data = {
+"RESET": SubResource("Animation_skpik"),
+"reload": SubResource("Animation_rinkr")
+}
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_inumd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MagazineSprite" type="Sprite2D" parent="."]
+position = Vector2(14, 8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_t1iax")
+
+[node name="GunSprite" type="Sprite2D" parent="."]
 position = Vector2(9, 0)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_3xtpk")
+texture = ExtResource("3_4tj1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vsu4e")
+}
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(55, -7)

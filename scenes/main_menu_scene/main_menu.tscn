@@ -1,0 +1,236 @@
+[gd_scene load_steps=6 format=3 uid="uid://70ggjbkmmbl2"]
+
+[ext_resource type="Script" path="res://scenes/main_menu_scene/main_menu.gd" id="1_nvi6m"]
+[ext_resource type="Texture2D" uid="uid://c5its3v7gueqp" path="res://scenes/main_menu_scene/assets/panel_brown.png" id="2_dvm1s"]
+[ext_resource type="Texture2D" uid="uid://cdfgmxa7tyki0" path="res://scenes/main_menu_scene/assets/buttonLong_blue.png" id="3_fvsgc"]
+[ext_resource type="Texture2D" uid="uid://40fohua4x85j" path="res://scenes/main_menu_scene/assets/buttonLong_blue_pressed.png" id="4_vgvt2"]
+[ext_resource type="AudioStream" uid="uid://dri1naqsyvet1" path="res://scenes/main_menu_scene/assets/menu_selection_click.wav" id="5_c8oap"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nvi6m")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -135.0
+offset_right = 166.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dvm1s")
+patch_margin_left = 20
+patch_margin_top = 10
+patch_margin_right = 20
+patch_margin_bottom = 10
+
+[node name="ButtonVBoxContainer" type="VBoxContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 31.0
+offset_right = -56.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="TextureButton" parent="Background/ButtonVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_fvsgc")
+texture_pressed = ExtResource("4_vgvt2")
+texture_hover = ExtResource("4_vgvt2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/ButtonVBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+
+[node name="HSeparator" type="HSeparator" parent="Background/ButtonVBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="RulesButton" type="TextureButton" parent="Background/ButtonVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_fvsgc")
+texture_pressed = ExtResource("4_vgvt2")
+texture_hover = ExtResource("4_vgvt2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/ButtonVBoxContainer/RulesButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "RULES"
+
+[node name="HSeparator2" type="HSeparator" parent="Background/ButtonVBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="QuitButton" type="TextureButton" parent="Background/ButtonVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_fvsgc")
+texture_pressed = ExtResource("4_vgvt2")
+texture_hover = ExtResource("4_vgvt2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Background/ButtonVBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
+[node name="RulesVBoxContainer" type="VBoxContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/RulesVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]RULES
+
+Use the left mouse button to shoot.
+
+Use the right mouse button to throw grenades.
+
+Don't let the enemies overrun the fort."
+
+[node name="ReturnButton" type="TextureButton" parent="Background/RulesVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("3_fvsgc")
+texture_pressed = ExtResource("4_vgvt2")
+texture_hover = ExtResource("4_vgvt2")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Background/RulesVBoxContainer/ReturnButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Return"
+
+[node name="GameOverVBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background/GameOverVBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "GAME
+OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="TextureButton" parent="Background/GameOverVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("3_fvsgc")
+texture_pressed = ExtResource("4_vgvt2")
+texture_hover = ExtResource("4_vgvt2")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Background/GameOverVBoxContainer/ReplayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -22.5
+offset_right = 57.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Menu"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c8oap")
+volume_db = -10.0

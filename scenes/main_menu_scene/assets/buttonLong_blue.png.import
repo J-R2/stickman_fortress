@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://klbv5ufdmalv"
-path="res://.godot/imported/assaultrifle.png-841a3bd632c424e9b5bc22ff933a781b.ctex"
+uid="uid://cdfgmxa7tyki0"
+path="res://.godot/imported/buttonLong_blue.png-4dac29aebfab80219169ced70d9ce1d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/gun_scene/art/assaultrifle.png"
-dest_files=["res://.godot/imported/assaultrifle.png-841a3bd632c424e9b5bc22ff933a781b.ctex"]
+source_file="res://scenes/main_menu_scene/assets/buttonLong_blue.png"
+dest_files=["res://.godot/imported/buttonLong_blue.png-4dac29aebfab80219169ced70d9ce1d7.ctex"]
 
 [params]
 

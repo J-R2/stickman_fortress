@@ -559,7 +559,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e74pl"]
 size = Vector2(24, 35)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1

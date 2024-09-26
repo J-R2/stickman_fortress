@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2do1t84bm7sj"]
+[gd_scene load_steps=7 format=3 uid="uid://d2do1t84bm7sj"]
 
 [ext_resource type="PackedScene" uid="uid://6j31lg2e3b53" path="res://scenes/tilemap_scene/tilemap.tscn" id="1_aim2n"]
 [ext_resource type="PackedScene" uid="uid://bewh608jl7318" path="res://scenes/tower_scene/tower.tscn" id="2_uexxp"]
 [ext_resource type="PackedScene" uid="uid://4hdf5t7j3efu" path="res://scenes/player_scene/player.tscn" id="3_owckq"]
 [ext_resource type="PackedScene" uid="uid://6aly14edm5nr" path="res://scenes/enemy_spawner_scene/enemy_spawner.tscn" id="4_mjg3k"]
+[ext_resource type="PackedScene" uid="uid://70ggjbkmmbl2" path="res://scenes/main_menu_scene/main_menu.tscn" id="5_2ghyx"]
+[ext_resource type="PackedScene" uid="uid://t343immbjpkt" path="res://scenes/hud_scene/hud.tscn" id="6_3l6h2"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Tilemap" parent="." instance=ExtResource("1_aim2n")]
-visible = false
 
 [node name="Tower" parent="." instance=ExtResource("2_uexxp")]
 
@@ -17,3 +18,11 @@ position = Vector2(1185, 330)
 scale = Vector2(-1, 1)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_mjg3k")]
+
+[node name="MainMenu" parent="." instance=ExtResource("5_2ghyx")]
+offset_left = 640.0
+offset_top = 359.0
+offset_right = 640.0
+offset_bottom = 359.0
+
+[node name="Hud" parent="." instance=ExtResource("6_3l6h2")]
