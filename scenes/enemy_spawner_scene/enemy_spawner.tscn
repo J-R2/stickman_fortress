@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://6aly14edm5nr"]
+[gd_scene load_steps=3 format=3 uid="uid://6aly14edm5nr"]
 
 [ext_resource type="Script" path="res://scenes/enemy_spawner_scene/enemy_spawner.gd" id="1_ns21r"]
+[ext_resource type="Texture2D" uid="uid://c5its3v7gueqp" path="res://scenes/main_menu_scene/assets/panel_blue.png" id="2_hwe0v"]
 
 [node name="EnemySpawner" type="Node2D" groups=["spawner"]]
 script = ExtResource("1_ns21r")
@@ -10,3 +11,31 @@ position = Vector2(-80, 59)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="WaveBanner" type="NinePatchRect" parent="."]
+offset_left = 534.0
+offset_top = -95.0
+offset_right = 709.0
+offset_bottom = -55.0
+texture = ExtResource("2_hwe0v")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Label" type="Label" parent="WaveBanner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Wave  1"

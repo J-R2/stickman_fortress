@@ -1,5 +1,6 @@
 ## The game's main menu, contains a play button, rules page, and an option to quit the game.
 extends Control
+signal game_start
 
 var buttons = null ## Array of all the buttons.
 ## The container that holds all the main menu buttons.
@@ -22,6 +23,7 @@ func _ready() -> void:
 	%QuitButton.pressed.connect(get_tree().quit)
 	%ReturnButton.pressed.connect(show_main_menu)
 	%ReplayButton.pressed.connect(get_tree().reload_current_scene)
+	%PlayButton.pressed.connect(func() -> void : game_start.emit())
 	# connect to the game over signal
 	get_tree().get_first_node_in_group("tower").game_over.connect(_on_game_over)
 	show_main_menu() # start the game on the main menu page

@@ -9,6 +9,7 @@ var counter := 0
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().get_first_node_in_group("player").ammunition_counter.connect(_update_ammo_counters)
 	get_tree().get_first_node_in_group("player").enemies_killed.connect(_update_kill_count)
 

@@ -34,7 +34,7 @@ var line_index := 0
 const GRENADE = preload("res://scenes/grenade_scene/grenade.tscn")
 # The max ammo and grenades the player can hold. (Infinite reload of gun ammo.)
 const MAX_AMMO = 30
-const MAX_GRENADES = 99
+const MAX_GRENADES = 5
 
 ## The pivot for where the player holds the gun, the gun rotates on this pivot to aim at enemies.
 @onready var marker_gun_pivot: Marker2D = $MarkerGunPivot
@@ -49,9 +49,10 @@ var grenades := 0
 
 func _ready() -> void :
 	ammo = MAX_AMMO
-	grenades = MAX_GRENADES	
+	grenades = MAX_GRENADES
 	get_viewport().ready.connect(func() -> void: ammunition_counter.emit(ammo, grenades))
 	get_tree().get_first_node_in_group("spawner").death_counter.connect(_on_enemy_killed)
+	get_tree().get_first_node_in_group("menu").game_start.connect(func() -> void :ammunition_counter.emit(ammo, grenades))
 
 
 ## Aim the gun towards the crosshair, only allow to aim towards right side of the screen.
