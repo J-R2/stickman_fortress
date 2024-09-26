@@ -1,3 +1,85 @@
-[gd_scene format=3 uid="uid://4hdf5t7j3efu"]
+[gd_scene load_steps=13 format=3 uid="uid://4hdf5t7j3efu"]
+
+[ext_resource type="Script" path="res://scenes/player_scene/player.gd" id="1_x3j02"]
+[ext_resource type="Texture2D" uid="uid://cv3jj3365jnko" path="res://scenes/player_scene/art/player_idle_sheet.png" id="1_xgsjb"]
+[ext_resource type="PackedScene" uid="uid://1x0cwiujmib2" path="res://scenes/gun_scene/gun.tscn" id="2_eglij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptt6h"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbvdq"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ntoh"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm47u"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekpp8"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xow7v"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi6wi"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(3072, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1shi"]
+atlas = ExtResource("1_xgsjb")
+region = Rect2(3584, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nei7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptt6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbvdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ntoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm47u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekpp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xow7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi6wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1shi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_x3j02")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -79)
+scale = Vector2(0.635, 0.635)
+sprite_frames = SubResource("SpriteFrames_nei7r")
+autoplay = "default"
+frame_progress = 0.559414
+
+[node name="MarkerGunPivot" type="Marker2D" parent="."]
+position = Vector2(36, -49)
+
+[node name="Gun" parent="MarkerGunPivot" instance=ExtResource("2_eglij")]
+position = Vector2(-10, -2)
